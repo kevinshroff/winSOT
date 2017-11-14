@@ -134,22 +134,26 @@ public class MainUI extends javax.swing.JFrame {
         
         Kernel32.SYSTEM_POWER_STATUS batteryStatus = new Kernel32.SYSTEM_POWER_STATUS(); //new instance of class
         String SystemPowerStatus = batteryStatus.getACLineStatusString(); //get charging status
+        
+        System.out.print(SystemPowerStatus);
+
         //Kernel32.INSTANCE.GetSystemPowerStatus(batteryStatus);
         
-        //if (batteryStatus.toString() == "Online")
-        //{
-        //    IsDeviceCharging = true;
-        //    jLabel2.setText("Device Status: AC Plugged In (Charging)");
-        //    
-        //}
+        if (SystemPowerStatus.toString() == "Online")
+        {
+            IsDeviceCharging = true;
+            jLabel2.setText("Device Status: AC Plugged In (Charging)");
+            
+        }
         
-        //if (batteryStatus.toString() == "Offline")
-        //{
-        //    IsDeviceCharging = false;
-        //    jLabel2.setText("Device Status: On Battery");
-        //    //call method to begin timer
-        //    StartTimer();
-        //}
+        if (SystemPowerStatus.toString() == "Offline")
+        {
+            System.out.print("if2");
+            IsDeviceCharging = false;
+            jLabel2.setText("Device Status: On Battery");
+            //call method to begin timer
+            StartTimer();
+        }
         
         //System.out.print(SystemPowerStatus);
         //Timer
